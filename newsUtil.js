@@ -104,7 +104,7 @@ function sendRequest(category) {
         }
         else {
             console.log(category + " news retrieved");
-            console.log(body)
+
             parseResponse(JSON.parse(body));
         }
     });
