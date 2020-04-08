@@ -186,11 +186,11 @@ function createValuesString()  {
 }
 
 function writeToFile(html) {
-    fs.writeFile("index.html", html, function(err) {
+    fs.writeFile("newscloud.html", html, function(err) {
         if(err) {
             return console.log(err);
         }
-        console.log("index.html written");
+        console.log("newscloud.html written");
     }); 
 }
 
