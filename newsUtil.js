@@ -79,7 +79,10 @@ var ignore = [
     'or',
     'so',
     'this',
-    'that'
+    'that',
+    'are',
+    'just',
+    'was'
 ];
 
 function getNews() {
@@ -168,7 +171,7 @@ function createHTML() {
                 document.getElementById('treeMapDiv'), 
                 { 
                     list: ` + values + `,
-                    weightFactor: 10  
+                    weightFactor: 3  
                 } 
             );                    
         </script>
