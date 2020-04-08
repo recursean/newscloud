@@ -4,8 +4,7 @@ Displays most used words in top news headlines in a word cloud format.
 
 # Prereqs
 
-Node.js
-npm
+Node.js, npm
 
 # Run
 
