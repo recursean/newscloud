@@ -15,6 +15,7 @@ var requestReturnCount = 0;
 var headlines = [];
 
 var wordMap = new Map();
+var wordCount = 0;
 
 // common articles, prepositions, etc
 var ignore = [
@@ -90,7 +91,7 @@ function getNews() {
 // replace api key dynamically
 function sendRequest(category) {
     var options = {
-        url: "https://newsapi.org/v2/top-headlines?category=" + category + "&country=us&apiKey=d29cb9aebe2e409f81d8d40d32f373c8",
+        url: "https://newsapi.org/v2/top-headlines?category=" + category + "&country=us&pageSize=100&apiKey=d29cb9aebe2e409f81d8d40d32f373c8",
         method: "get"
     }
     
@@ -103,7 +104,7 @@ function sendRequest(category) {
         }
         else {
             console.log(category + " news retrieved");
-
+            console.log(body)
             parseResponse(JSON.parse(body));
         }
     });
@@ -148,22 +149,25 @@ function clean(word) {
 }
 
 function createHTML() {
+    var values = createValuesString();
+
     var html = `
 <html>
     <head>
         <script type="text/javascript" src="node_modules/wordcloud/src/wordcloud2.js"></script>
         
-        <title>Headlines</title>
+        <title>NewsCloud</title>
     </head>
 
     <body>
+        <div>` + wordCount + ` words</div>
         <div id="treeMapDiv" style="width: 100%; height: 100%"></div>
 
         <script type="text/javascript">
             WordCloud(
                 document.getElementById('treeMapDiv'), 
                 { 
-                    list: ` + createValuesString() + `,
+                    list: ` + values + `,
                     weightFactor: 10  
                 } 
             );                    
@@ -179,7 +183,11 @@ function createValuesString()  {
     var values = '[';
 
     for(key of wordMap.keys()) {
-        values +=  "['" + key + "', " + wordMap.get(key) + "],";
+        if(wordMap.get(key) > 1) {
+            values +=  "['" + key + "', " + wordMap.get(key) + "],";
+
+            wordCount++;
+        }
     }
 
     return values.substring(0, values.length - 1) + ']';
