@@ -1,0 +1,15 @@
+{
+  "name": "headlines",
+  "version": "1.0.0",
+  "description": "analyzing top headlines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sean McShane",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2",
+    "wordcloud": "^1.1.1"
+  }
+}
