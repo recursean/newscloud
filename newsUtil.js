@@ -82,7 +82,19 @@ var ignore = [
     'that',
     'are',
     'just',
-    'was'
+    'was',
+    '|',
+    'i',
+    '&',
+    'you',
+    'how',
+    'why',
+    'what',
+    'can',
+    'your',
+    'has',
+    'says',
+    'get'
 ];
 
 function getNews() {
@@ -157,24 +169,46 @@ function createHTML() {
     var html = `
 <html>
     <head>
-        <script type="text/javascript" src="node_modules/wordcloud/src/wordcloud2.js"></script>
-        
+        <script type="text/javascript" src="wordcloud/src/wordcloud2.js"></script>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            table, th, td {
+                border: 1px solid black;
+            }
+            #wordCloudDiv {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
         <title>NewsCloud</title>
     </head>
 
     <body>
-        <div>` + wordCount + ` words</div>
-        <div id="treeMapDiv" style="width: 100%; height: 100%"></div>
+        <h3 style='text-align:center'>NewsCloud</h3>
+        <div style='text-align:center'>` + wordCount + ` words</div>
+        <div id="wordCloudDiv"></div>
 
         <script type="text/javascript">
             WordCloud(
-                document.getElementById('treeMapDiv'), 
+                document.getElementById('wordCloudDiv'), 
                 { 
                     list: ` + values + `,
-                    weightFactor: 3  
+                    weightFactor: 3,
+                    click: function(item) {
+                        alert(item[0] + ' used ' + item[1] + ' times');
+                    } 
                 } 
             );                    
         </script>
+
+        <table align=center>
+                <tr>
+                    <td><b>Word</b></td>
+                    <td><b>Times used</b></td> 
+                </tr>` + createTableString() + `
+        </table>
     </body>
 </html>
     `
@@ -194,6 +228,20 @@ function createValuesString()  {
     }
 
     return values.substring(0, values.length - 1) + ']';
+}
+
+function createTableString() {
+    var tableString = '';
+    var count = 0;
+
+    for(key of wordMap.keys()) {
+        tableString += '<tr><td>' + key + '</td><td>' + wordMap.get(key) + '</td></tr>';
+        if(++count == 25) {
+            break;
+        }
+    }
+
+    return tableString;
 }
 
 function writeToFile(html) {
