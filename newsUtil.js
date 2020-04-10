@@ -250,7 +250,8 @@ function createTableString() {
 function createDateString() {
     var date = new Date();
 
-    return date.toLocaleDateString('en-US') + ' ' + date.toLocaleTimeString('en-US');
+    return date.toLocaleDateString('en-US', {timeZone: "America/New_York"}) + 
+            ' ' + date.toLocaleTimeString('en-US', {timeZone: "America/New_York"});
 }
 
 function writeToFile(html) {
