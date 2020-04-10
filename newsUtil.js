@@ -165,6 +165,8 @@ function clean(word) {
 
 function createHTML() {
     var values = createValuesString();
+    var tableString = createTableString();
+    var dateString = createDateString();
 
     var html = `
 <html>
@@ -188,6 +190,7 @@ function createHTML() {
     <body>
         <h3 style='text-align:center'>NewsCloud</h3>
         <div style='text-align:center'>` + wordCount + ` words</div>
+        <div style='text-align:center'>Updated ` + dateString + `</div>
         <div id="wordCloudDiv"></div>
 
         <script type="text/javascript">
@@ -207,7 +210,7 @@ function createHTML() {
                 <tr>
                     <td><b>Word</b></td>
                     <td><b>Times used</b></td> 
-                </tr>` + createTableString() + `
+                </tr>` + tableString + `
         </table>
     </body>
 </html>
@@ -242,6 +245,13 @@ function createTableString() {
     }
 
     return tableString;
+}
+
+function createDateString() {
+    var date = new Date();
+
+    return (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + 
+            ' ' + date.getHours() + ':' + date.getMinutes();
 }
 
 function writeToFile(html) {
