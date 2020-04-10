@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "newscloud": "node newsUtil.js",
     "open": "open -a 'Google Chrome' newscloud.html"
+    "cron": "npm run newscloud && sudo cp newscloud.html /var/www/html" 
   },
   "author": "Sean McShane",
   "license": "ISC",
