@@ -249,9 +249,8 @@ function createTableString() {
 
 function createDateString() {
     var date = new Date();
-
-    return (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear() + 
-            ' ' + date.getHours() + ':' + date.getMinutes();
+    
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 }
 
 function writeToFile(html) {
