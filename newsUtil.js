@@ -175,6 +175,7 @@ function createHTML() {
         <style>
             table {
                 border-collapse: collapse;
+                width: 75%;
             }
             table, th, td {
                 border: 1px solid black;
@@ -182,16 +183,22 @@ function createHTML() {
             #wordCloudDiv {
                 width: 100%;
                 height: 100%;
+                margin: auto;
             }
         </style>
         <title>NewsCloud</title>
     </head>
 
     <body>
-        <h3 style='text-align:center'>NewsCloud</h3>
+        <h2 style='text-align:center;margin-bottom:0;'>NewsCloud</h2>
+        <div style='text-align:center'><i>Analyzing top news headlines</i></div>
+        <br>
         <div style='text-align:center'>` + wordCount + ` words</div>
         <div style='text-align:center'>Updated ` + dateString + `</div>
+        <hr>
+        <h1 style='text-align:center'>Top 25 most used words</h1>
         <div id="wordCloudDiv"></div>
+        <hr>
 
         <script type="text/javascript">
             WordCloud(
@@ -201,7 +208,7 @@ function createHTML() {
                     weightFactor: 3,
                     click: function(item) {
                         alert(item[0] + ' used ' + item[1] + ' times');
-                    } 
+                    }
                 } 
             );                    
         </script>
