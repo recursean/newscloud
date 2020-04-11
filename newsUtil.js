@@ -206,7 +206,9 @@ function createHTML() {
                     list: ` + values + `,
                     weightFactor: 3,
                     click: function(item) {
-                        alert(item[0] + ' used ' + item[1] + ' times');
+                        if (window.confirm(item[0] + ' used ' + item[1] + ' times.\\nClick OK to Google ' + item[0] + '.')) {
+                            window.location.href='https://www.google.com/search?q=' + item[0];
+                        };
                     }
                 } 
             );                    
