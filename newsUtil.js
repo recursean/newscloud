@@ -94,7 +94,10 @@ var ignore = [
     'your',
     'has',
     'says',
-    'get'
+    'get',
+    'he',
+    'her',
+    '-'
 ];
 
 function getNews() {
