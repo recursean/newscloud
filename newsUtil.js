@@ -214,13 +214,16 @@ function createHTML() {
             );                    
         </script>
 
-        <h1 style='text-align:center'>Top 25 most used words</h1>
+        <h3 style='text-align:center'>Top 25 most used words</h3>
         <table align=center>
                 <tr>
                     <td><b>Word</b></td>
                     <td><b>Times used</b></td> 
                 </tr>` + tableString + `
         </table>
+        <hr>
+        <h3 style='text-align:center'>Disclaimer</h3>
+        <div style='text-align:center'>Only words that appeared more than once in the headlines will show here. Common words, articles, and prepositions are removed.</div>
     </body>
 </html>
     `
