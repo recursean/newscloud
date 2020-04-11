@@ -196,7 +196,6 @@ function createHTML() {
         <div style='text-align:center'>` + wordCount + ` words</div>
         <div style='text-align:center'>Updated ` + dateString + `</div>
         <hr>
-        <h1 style='text-align:center'>Top 25 most used words</h1>
         <div id="wordCloudDiv"></div>
         <hr>
 
@@ -213,6 +212,7 @@ function createHTML() {
             );                    
         </script>
 
+        <h1 style='text-align:center'>Top 25 most used words</h1>
         <table align=center>
                 <tr>
                     <td><b>Word</b></td>
